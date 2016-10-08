@@ -66,4 +66,17 @@ router.get('/remove/:id', function(req, res) {
   });
 });
 
+// PUT /users/update
+// update details of a user with given id
+router.put('/update/:id', function(req,res) {
+  User.findById(req.params.id).update(req.body.info, function(err, user){
+    if (err) {
+      return res.status(500).json({
+		error: "problem with updating user" + err
+	  });
+	}
+    res.status(200).json(user);
+  });
+});
+
 module.exports = router;
