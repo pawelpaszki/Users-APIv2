@@ -2,6 +2,13 @@ var User = require('../models/user');
 var express = require('express');
 var router = express.Router();
 
+var bodyParser = require('body-parser');
+
+// body parser to get data from the body
+router.use(bodyParser.urlencoded({
+  extend: true
+}));
+router.use(bodyParser.json());
 
 // GET /users
 // Get a list of users
