@@ -53,4 +53,17 @@ router.post('/create', function(req, res, next) {
   });
 });
 
+// GET /users/remove/:id
+// Remove user with given ID
+router.get('/remove/:id', function(req, res) {
+  User.findByIdAndRemove(req.params.id, function(err) {
+    if (err) {
+      return res.status(500).json({
+        error: "cannot remove a user" + err
+      });
+    }
+    res.status(200).json('user removed');
+  });
+});
+
 module.exports = router;

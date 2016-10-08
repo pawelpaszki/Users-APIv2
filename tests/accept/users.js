@@ -115,4 +115,26 @@ describe('Users', function() {
     });
   });
   
+describe('/GET user', function() {
+  it('should remove a user', function(done) {
+    var testUser = getTestUserDetails();
+    chai.request(url)
+      .post('/users/create')
+      .set('content-type', 'application/json')
+      .send(testUser)
+      .end(function(err, res) {
+        expect(res.body.username).to.equal("tinywolf709");
+        User.findOne({}, function(err, testUser) {
+          var id = testUser._id;
+          chai.request(url)
+            .get('/users/remove/' + id)
+            .end(function(err, res) {
+              res.should.have.status(200);
+              done();
+            });
+        });
+      });
+  });
+});
+  
 });
