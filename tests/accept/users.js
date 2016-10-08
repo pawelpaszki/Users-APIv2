@@ -115,26 +115,55 @@ describe('Users', function() {
     });
   });
   
-describe('/GET user', function() {
-  it('should remove a user', function(done) {
-    var testUser = getTestUserDetails();
-    chai.request(url)
-      .post('/users/create')
-      .set('content-type', 'application/json')
-      .send(testUser)
-      .end(function(err, res) {
-        expect(res.body.username).to.equal("tinywolf709");
-        User.findOne({}, function(err, testUser) {
-          var id = testUser._id;
-          chai.request(url)
-            .get('/users/remove/' + id)
-            .end(function(err, res) {
-              res.should.have.status(200);
-              done();
-            });
+  describe('/PUT user', function() {
+    it('should update a user', function(done) {
+      var testUser = getTestUserDetails();
+      chai.request(url)
+        .post('/users/create')
+        .send(testUser)
+        .end(function(err, res) {
+          expect(res.body.username).to.equal("tinywolf709");
+          User.findOne({}, function(err, testUser) {
+            var id = testUser._id;
+            console.log("########" + id);
+            chai.request(url)
+              .put('/users/update/' + id)
+              .set('content-type', 'application/json')
+              .send({
+                'username': 'some very long username'
+              })
+              .end(function(err, res) {
+                res.should.have.status(200);
+                done();
+                npm
+              });
+          });
         });
-      });
+
+
+    });
   });
-});
+  
+  describe('/GET user', function() {
+    it('should remove a user', function(done) {
+      var testUser = getTestUserDetails();
+      chai.request(url)
+        .post('/users/create')
+        .set('content-type', 'application/json')
+        .send(testUser)
+        .end(function(err, res) {
+          expect(res.body.username).to.equal("tinywolf709");
+          User.findOne({}, function(err, testUser) {
+            var id = testUser._id;
+            chai.request(url)
+              .get('/users/remove/' + id)
+              .end(function(err, res) {
+                res.should.have.status(200);
+                done();
+              });
+          });
+        });
+    });
+  });
   
 });
