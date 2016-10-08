@@ -44,4 +44,13 @@ router.get('/:id', function(req, res) {
   });
 });
 
+// POST /users/create
+// Post details of new user
+router.post('/create', function(req, res, next) {
+  var user = new User(req.body);
+  user.save().then(function(newUser) {
+    res.status(200).json(newUser);
+  });
+});
+
 module.exports = router;
