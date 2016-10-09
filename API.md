@@ -203,9 +203,9 @@ Returns a list of Users
   });
   ```
   
-  **Create a User**
+**Create a User**
 ----
-  Creates single user
+Creates single user
 
 * **URL**
 
@@ -221,8 +221,9 @@ Returns a list of Users
 
 * **Data Params**
 
+  ```javascript
   {
-    gender: String,
+    gender: String
     name: {
       title: String
       first: String
@@ -252,6 +253,7 @@ Returns a list of Users
       thumbnail: String
     }
   }
+  ```
 
 * **Success Response:**
 
@@ -310,9 +312,9 @@ Returns a list of Users
   });
   ```
   
-    **Remove a user**
+**Remove a user**
 ----
-  Removes a single user, if id match found
+Removes a single user, if id match found
 
 * **URL**
 
@@ -363,9 +365,9 @@ Returns a list of Users
   });
   ```
   
-   **Update a user**
+**Update a user**
 ----
-  Updates single user's details, if id match found
+Updates single user's details, if id match found
 
 * **URL**
 
@@ -385,6 +387,7 @@ Returns a list of Users
 
   Any of the following:
   
+  ```javascript
   {
     gender: String,
     name: {
@@ -416,6 +419,7 @@ Returns a list of Users
       thumbnail: String
     }
   }
+  ```
 
 * **Success Response:**
 
