@@ -418,7 +418,7 @@ Updates single user's details, if id match found
       medium: String
       thumbnail: String
     }
-  }
+  };
   ```
 
 * **Success Response:**
@@ -426,7 +426,7 @@ Updates single user's details, if id match found
   * **Code:** 200 <br />
     **Content:**
 
-```javascript
+  ```javascript
     {
       "_id": "57b330de848a005e48f5de94",
       "gender": "female",
@@ -459,7 +459,7 @@ Updates single user's details, if id match found
         "thumbnail": "https://randomuser.me/api/portraits/thumb/women/20.jpg"
       },
       "__v": 0
-    }
+    };
     ```
 
 * **Error Response:**
