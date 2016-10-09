@@ -125,7 +125,6 @@ describe('Users', function() {
           expect(res.body.username).to.equal("tinywolf709");
           User.findOne({}, function(err, testUser) {
             var id = testUser._id;
-            console.log("########" + id);
             chai.request(url)
               .put('/users/update/' + id)
               .set('content-type', 'application/json')

@@ -59,7 +59,7 @@ router.get('/remove/:id', function(req, res) {
   User.findByIdAndRemove(req.params.id, function(err) {
     if (err) {
       return res.status(500).json({
-        error: "cannot remove a user" + err
+        error: "Cannot remove a user" + err
       });
     }
     res.status(200).json('user removed');
@@ -72,7 +72,7 @@ router.put('/update/:id', function(req,res) {
   User.findById(req.params.id).update(req.body.info, function(err, user){
     if (err) {
       return res.status(500).json({
-		error: "problem with updating user" + err
+		error: "Problem with updating user" + err
 	  });
 	}
     res.status(200).json(user);

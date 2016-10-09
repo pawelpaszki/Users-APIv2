@@ -202,5 +202,282 @@ Returns a list of Users
     }
   });
   ```
+  
+  **Create a User**
+----
+  Creates single user
+
+* **URL**
+
+  `/users/create`
+
+* **Method:**
+
+  `POST`
+
+*  **URL Params**
+
+  None
+
+* **Data Params**
+
+  {
+    gender: String,
+    name: {
+      title: String
+      first: String
+      last: String
+    }
+    location: {
+      street: String
+      city: String
+      state: String
+      zip: Number
+    }
+    email: String,
+    username: String,
+    password: String,
+    salt: String,
+    md5: String,
+    sha1: String,
+    sha256: String,
+    registered: Number,
+    dob: Number,
+    phone: String,
+    cell: String,
+    PPS: String,
+    picture: {
+      large: String
+      medium: String
+      thumbnail: String
+    }
+  }
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```javascript
+    {
+      "_id": "57b330de848a005e48f5de94",
+      "gender": "female",
+      "name": {
+        "title": "ms",
+        "first": "olivia",
+        "last": "young"
+      },
+      "location": {
+        "street": "1119 grove road",
+        "city": "Mountmellick",
+        "state": "rhode island",
+        "zip": 88061
+      },
+      "email": "olivia.young@example.com",
+      "username": "crazykoala938",
+      "password": "malibu",
+      "salt": "78TEnNQ1",
+      "md5": "9bebcc9d890f8c9e04c9e40fc1f41476",
+      "sha1": "36d6a69cabff0ad780a3dcceb4e94d44edb62fc6",
+      "sha256": "9e39c873967f52d67e8d052aad87daf4b63d5464a27de982b64abfe9b208efc8",
+      "registered": 1411100094,
+      "dob": 818810543,
+      "phone": "011-475-1126",
+      "cell": "081-725-2254",
+      "PPS": "4335321T",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/20.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/20.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/20.jpg"
+      },
+    }
+    ```
+
+* **Error Response:**
+
+  None
+
+* **Sample Call:**
+
+  ```javascript
+  $.ajax({
+    url: "/users/create",
+    dataType: "json",
+    type : "POST",
+    success : function(r) {
+      console.log(r);
+    }
+  });
+  ```
+  
+    **Remove a user**
+----
+  Removes a single user, if id match found
+
+* **URL**
+
+  `/users/remove/:id`
+
+* **Method:**
+
+  `GET`
+
+*  **URL Params**
+
+   **Required:**
+
+   `id=[string]`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+	```javascript
+  { "User removed" }
+  ```
+
+* **Error Response:**
+
+* **Code:** 500 INTERNAL SERVER ERROR <br />
+  **Content:**
+
+  ```javascript
+  { "error": "Cannot remove a user" }
+  ```
+
+* **Sample Call:**
+
+  ```javascript
+  $.ajax({
+    url: "/users/remove/1",
+    dataType: "json",
+    type : "GET",
+    success : function(r) {
+      console.log(r);
+    }
+  });
+  ```
+  
+   **Update a user**
+----
+  Updates single user's details, if id match found
+
+* **URL**
+
+  `/users/update/:id`
+
+* **Method:**
+
+  `PUT`
+
+*  **URL Params**
+
+   **Required:**
+
+   `id=[string]`
+
+* **Data Params**
+
+  Any of the following:
+  
+  {
+    gender: String,
+    name: {
+      title: String
+      first: String
+      last: String
+    }
+    location: {
+      street: String
+      city: String
+      state: String
+      zip: Number
+    }
+    email: String,
+    username: String,
+    password: String,
+    salt: String,
+    md5: String,
+    sha1: String,
+    sha256: String,
+    registered: Number,
+    dob: Number,
+    phone: String,
+    cell: String,
+    PPS: String,
+    picture: {
+      large: String
+      medium: String
+      thumbnail: String
+    }
+  }
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+```javascript
+    {
+      "_id": "57b330de848a005e48f5de94",
+      "gender": "female",
+      "name": {
+        "title": "ms",
+        "first": "olivia",
+        "last": "young"
+      },
+      "location": {
+        "street": "1119 grove road",
+        "city": "Mountmellick",
+        "state": "rhode island",
+        "zip": 88061
+      },
+      "email": "olivia.young@example.com",
+      "username": "crazykoala938",
+      "password": "malibu",
+      "salt": "78TEnNQ1",
+      "md5": "9bebcc9d890f8c9e04c9e40fc1f41476",
+      "sha1": "36d6a69cabff0ad780a3dcceb4e94d44edb62fc6",
+      "sha256": "9e39c873967f52d67e8d052aad87daf4b63d5464a27de982b64abfe9b208efc8",
+      "registered": 1411100094,
+      "dob": 818810543,
+      "phone": "011-475-1126",
+      "cell": "081-725-2254",
+      "PPS": "4335321T",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/20.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/20.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/20.jpg"
+      },
+      "__v": 0
+    }
+    ```
+
+* **Error Response:**
+
+* **Code:** 500 INTERNAL SERVER ERROR <br />
+  **Content:**
+
+  ```javascript
+  { "error": "Problem with updating user" }
+  ```
+
+* **Sample Call:**
+
+  ```javascript
+  $.ajax({
+    url: "/users/update/1",
+    dataType: "json",
+    type : "PUT",
+    success : function(r) {
+      console.log(r);
+    }
+  });
+  ```
 
 Inspired by https://gist.github.com/iros/3426278
