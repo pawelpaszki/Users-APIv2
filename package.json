@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Basic RESTful User Management API",
   "main": "app.js",
-  "author": "Red Hat",
+  "author": "Pawel Paszki",
   "license": "MIT",
   "scripts": {
     "start": "node ./app.js",
